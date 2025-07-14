@@ -50,6 +50,12 @@ def obter_motoristas():
     conn.close()
     return motoristas
 
+def atualizar_dropdown_motoristas(combobox_motorista):
+    from db import listar_motoristas
+    motoristas = listar_motoristas()
+    combobox_motorista.configure(values=[f"{nome} - {telefone}" for nome, telefone in motoristas])
+
+
 def salvar_coleta(dados):
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
